@@ -19,16 +19,16 @@
 
 </head>
 
-<body class="bg-light bg-pattern">
+<body style="background-color: #ea7a26;">
     <div class="account-pages my-1 pt-sm-5">
         <div class="container">
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-lg-12">
                     <div class="text-center mb-2">
                         <a href="index.html" class="logo"><img src="https://lh3.googleusercontent.com/proxy/easWHFim7qkp95Kp7hjmd468u3vs0eI9BsvOmWBMyjupQ-0nmaMqWT89HkCP82CXp_gEuspVZoFLlVGbPwDh_9Sw-Xpk3F74T1F6F12ZCBM2" height="170" width="170" alt="logo"></a>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <!-- end row -->
 
             <div class="row justify-content-center">
@@ -42,13 +42,13 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group form-group-custom mb-4">
-                                                <label for="username">User Name</label>
-                                                <input type="text" class="form-control" name="username" id="username" required>
+                                                <p>User Name</p>
+                                                <input type="text" class="form-control" name="username" placeholder="username" required>
                                             </div>
 
                                             <div class="form-group form-group-custom mb-4">
-                                                <label for="userpassword">Password</label>
-                                                <input type="password" class="form-control" name="password" id="userpassword" required>
+                                                <p>Password</p>
+                                                <input type="password" class="form-control" name="password" placeholder="******" required>
                                             </div>
 
 

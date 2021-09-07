@@ -8,7 +8,11 @@ class Dashboard extends BaseController
 {
     public function index()
     {
-        return view('admin/dashboard_admin/index');
+        $data = [
+            'title' => 'Dashboard Admin | Infinity One Plus',
+        ];
+
+        return view('admin/dashboard_admin/index', $data);
     }
 
     //--------------------------------------------------------------------

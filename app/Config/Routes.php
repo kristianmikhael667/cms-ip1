@@ -18,10 +18,25 @@ $routes->setAutoRoute(true);
 $routes->group('admin', function ($routes) {
 	$routes->get('/', 'Dashboard::index', ['namespace' => 'App\Controllers\Admin\Dashboard']);
 	$routes->get('dashboard-admin', 'Dashboard::index', ['namespace' => 'App\Controllers\Admin\Dashboard']);
+	$routes->get('list-admin', 'Dataadmin::index', ['namespace' => 'App\Controllers\Admin\Dataadmin']);
+	$routes->get('create-admin', 'Dataadmin::create', ['namespace' => 'App\Controllers\Admin\Dataadmin']);
+	$routes->post('store', 'Dataadmin::store', ['namespace' => 'App\Controllers\Admin\Dataadmin']);
 });
+
+$routes->group('customer', function ($routes) {
+	$routes->get('/', 'Dashboard::index', ['namespace' => 'App\Controllers\Customer\Dashboard']);
+	$routes->get('dashboard-customer', 'Dashboard::index', ['namespace' => 'App\Controllers\Customer\Dashboard']);
+});
+
+$routes->group('user', function ($routes) {
+	$routes->get('/', 'Dashboard::index', ['namespace' => 'App\Controllers\User\Dashboard']);
+	$routes->get('dashboard-user', 'Dashboard::index', ['namespace' => 'App\Controllers\User\Dashboard']);
+});
+
 $routes->group('auth', function ($routes) {
 	$routes->get('login', 'Login::index', ['namespace' => 'App\Controllers\Auth\Login']);
 	$routes->post('login', 'Login::store', ['namespace' => 'App\Controllers\Auth\Login']);
+	$routes->get('logout', 'Login::logout', ['namespace' => 'App\Controllers\Auth\Login']);
 });
 
 if (file_exists(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
