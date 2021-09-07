@@ -34,9 +34,10 @@
                                 <div class="card-body">
                                     <div class="container">
                                         <form action="<?= base_url('/admin/store') ?>" method="POST" enctype="multipart/form-data">
+                                            <?= csrf_field(); ?>
+
                                             <div class="row">
                                                 <div class="col-5 mr-3">
-                                                    <?= csrf_field(); ?>
                                                     <div class="row mb-3">
                                                         <label for="username" class="col-form-label">* Username</label>
                                                         <input placeholder="Input Username" type="text" class="form-control <?= ($validation->hasError('username')) ? 'is-invalid' : ''; ?>" id="username" name="username" autofocus value="<?= old('username'); ?>">
@@ -62,22 +63,13 @@
                                                 </div>
                                                 <div class="col-6">
                                                     <div class="row mb-3">
-                                                        <label for="address" class="col-form-label">* Address</label>
-                                                        <input placeholder="Input Address" type="text" class="form-control <?= ($validation->hasError('address')) ? 'is-invalid' : ''; ?>" id="address" name="address" autofocus value="<?= old('address'); ?>">
+                                                        <label for="alamat" class="col-form-label">* Address</label>
+                                                        <input placeholder="Input Address" type="text" class="form-control <?= ($validation->hasError('alamat')) ? 'is-invalid' : ''; ?>" id="alamat" name="alamat" autofocus value="<?= old('alamat'); ?>">
                                                         <div class="invalid-feedback">
-                                                            <?= $validation->getError('address'); ?>
+                                                            <?= $validation->getError('alamat'); ?>
                                                         </div>
                                                     </div>
 
-                                                    <!-- <div class="row mb-3">
-                                                        <label for="company" class="col-form-label">* Name Company</label>
-                                                        <select class="custom-select">
-                                                            <option selected disabled>Select Name Company</option>
-                                                            <option value="1">PT. Telkomsel</option>
-                                                            <option value="2">PT. Indosat</option>
-                                                            <option value="3">PT. Esia</option>
-                                                        </select>
-                                                    </div> -->
                                                     <div class="row">
                                                         <label for="upload_logo" class="col-form-label">* Upload Logo</label>
                                                     </div>

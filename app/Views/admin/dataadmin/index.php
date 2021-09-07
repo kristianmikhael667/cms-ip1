@@ -39,22 +39,19 @@
                                                 <th>No</th>
                                                 <th>ID Admin</th>
                                                 <th>Username</th>
-                                                <th>Nama PT</th>
                                                 <th>Email</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
-
                                         <tbody>
                                             <?php $i = 1;
                                             foreach ($admins as $admin) :
                                             ?>
                                                 <tr>
                                                     <td><?= $i++ ?></td>
-                                                    <td><?= $admin['id_admin'] ?></td>
-                                                    <td><?= $admin['username'] ?></td>
-                                                    <td><?= $admin['nama_perusahaan'] ?></td>
-                                                    <td><?= $admin['email'] ?></td>
+                                                    <td><?= $admin->id_admin ?></td>
+                                                    <td><?= $admin->username ?></td>
+                                                    <td><?= $admin->email ?></td>
                                                     <td>Edit</td>
                                                 </tr>
                                             <?php endforeach; ?>

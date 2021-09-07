@@ -15,11 +15,11 @@
             </button>
 
         </div>
-
         <div class="d-flex">
             <div class="dropdown d-inline-block">
+
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="<?= base_url('/assets/images/users/avatar-1.jpg') ?>" alt="Avatar Admin">
+                    <img class="rounded-circle header-profile-user" src="<?= '/img/' . session('upload_logo') ?>" alt="Avatar Admin">
                     <span class="d-none d-sm-inline-block ml-1"><?= session()->get('username'); ?></span>
                     <i class="mdi mdi-chevron-down d-none d-sm-inline-block"></i>
                 </button>

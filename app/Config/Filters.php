@@ -39,7 +39,8 @@ class Filters extends BaseConfig
 		'isLoggedIn' => [
 			'before' => [
 				'/',
-				'dashboard-admin',
+				'/admin/dashboard-admin',
+				'/admin/list-admin',
 				'dashboard-customer'
 			],
 			'after' => [

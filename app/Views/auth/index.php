@@ -38,6 +38,11 @@
                             <div class="p-2">
                                 <h5 class="mb-1 text-center">Sign in to Employee </h5>
                                 <h3 class="mb-5 text-center text-primary">PT. Citra Agung Mestika</h3>
+                                <?php if (!empty(session()->getFlashdata('error'))) : ?>
+                                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                                        <?php echo session()->getFlashdata('error'); ?>
+                                    </div>
+                                <?php endif; ?>
                                 <form class="form-horizontal" method="post" action="<?= base_url(); ?>/auth/login">
                                     <div class="row">
                                         <div class="col-md-12">

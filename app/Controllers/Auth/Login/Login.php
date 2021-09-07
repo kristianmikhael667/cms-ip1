@@ -46,7 +46,6 @@ class Login extends BaseController
                 session()->set([
                     'id_admin' => $dataUserAdmin->id_admin,
                     'username' => $dataUserAdmin->username,
-                    'nama_perusahaan' => $dataUserAdmin->nama_perusahaan,
                     'alamat' => $dataUserAdmin->alamat,
                     'email' => $dataUserAdmin->email,
                     'password' => $dataUserAdmin->password,

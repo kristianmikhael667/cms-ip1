@@ -31,5 +31,5 @@
 
 <!-- Datatable init js -->
 <script src="<?= base_url('/assets/js/pages/datatables.init.js') ?>"></script>
-<!-- dropzone js -->
-<script src="<?= base_url('/assets/libs/dropzone/min/dropzone.min.js') ?>"></script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>

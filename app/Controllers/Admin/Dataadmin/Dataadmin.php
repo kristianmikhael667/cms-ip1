@@ -7,16 +7,16 @@ use App\Models\Admin\DataAdmins\DataAdmins;
 
 class Dataadmin extends BaseController
 {
-    protected $DataAdmins;
+    protected $dataAdmins;
     public function __construct()
     {
-        $this->DataAdmins = new DataAdmins();
+        $this->dataAdmins = new DataAdmins();
     }
     public function index()
     {
         $data = [
             'title' => 'List Admin',
-            'admins' => $this->DataAdmins->getDataAdmin()
+            'admins' => $this->dataAdmins->getDataAdmin()
         ];
 
         return view('admin/dataadmin/index', $data);
@@ -37,7 +37,7 @@ class Dataadmin extends BaseController
         if (!$this->validate(
             [
                 'username' => [
-                    'rules' => 'required|is_unique[tbl_admin.username]',
+                    'rules' => 'required|is_unique[tbl_admin.username]|is_unique[tbl_user.username]|is_unique[tbl_customer.username]',
                     'errors' => [
                         'required' => '{field} wajib diisi.',
                         'is_unique' => '{field} sudah terdaftar'
@@ -56,32 +56,22 @@ class Dataadmin extends BaseController
                     ]
                 ],
                 'alamat' => [
-                    'rules' => 'required|is_unique[tbl_admin.alamat]',
                     'errors' => [
                         'required' => '{field} wajib diisi.',
                     ]
                 ],
-                // 'upload_logo' => [
-                //     'rules' => 'max_size[upload_logo,1024]|is_image[upload_logo]|mime_in[upload_logo,image/jpg,image/jpeg, image/png]',
-                //     'errors' => [
-                //         'max_size' => 'Ukuran Gambar diatas 1 MB',
-                //         'is_image' => 'Bukan gambar',
-                //         'mime_in' => 'Bukan JPG, JPEG, PNG',
-                //         'required' => '{field} wajib diupload'
-                //     ]
-                // ],
-                'status' => [
-                    'rules' => 'required|is_unique[tbl_admin.status]',
+                'upload_logo' => [
+                    'rules' => 'max_size[upload_logo,1024]|is_image[upload_logo]|mime_in[upload_logo,image/jpg,image/jpeg, image/png]',
                     'errors' => [
-                        'required' => '{field} wajib diisi.',
+                        'max_size' => 'Ukuran Gambar diatas 1 MB',
+                        'is_image' => 'Bukan gambar',
+                        'mime_in' => 'Bukan JPG, JPEG, PNG',
+                        'required' => '{field} wajib diupload'
                     ]
-                ],
-
-
+                ]
             ]
         )) {
-            // $validation = \Config\Services::validation();
-            // return redirect()->to('/komik/create')->withInput()->with('validation', $validation);
+
             return redirect()->to('/admin/create-admin')->withInput();
         }
 
@@ -98,10 +88,9 @@ class Dataadmin extends BaseController
             //pindahkan ke folder img
             $fileSampul->move('img', $namaSampul);
         }
-
-        // $slug = url_title($this->request->getVar('judul'), '-', true);
-        $this->admins->save([
-            'id_admin' => 'uuid()',
+        // dd(csrf_hash());
+        $this->dataAdmins->save([
+            'id_admin' => csrf_hash(),
             'username' => $this->request->getVar('username'),
             'nama_perusahaan' => $this->request->getVar('penulis'),
             'alamat' => $this->request->getVar('alamat'),
