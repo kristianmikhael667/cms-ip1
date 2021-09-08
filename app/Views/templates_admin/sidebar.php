@@ -33,8 +33,8 @@
                          <span>Data Customer</span>
                      </a>
                      <ul class="sub-menu" aria-expanded="false">
-                         <li><a href="email-inbox.html">List Customer</a></li>
-                         <li><a href="email-read.html">Create Customer</a></li>
+                         <li><a href="<?= base_url('/admin/list-customers') ?>">List Customer</a></li>
+                         <li><a href="<?= base_url('/admin/create-customer') ?>">Create Customer</a></li>
                      </ul>
                  </li>
 
@@ -44,7 +44,7 @@
                          <span>Data Users</span>
                      </a>
                      <ul class="sub-menu" aria-expanded="false">
-                         <li><a href="email-inbox.html">List Users</a></li>
+                         <li><a href="<?= base_url('/admin/list-users') ?>">List Users</a></li>
                          <li><a href="email-read.html">Create Users</a></li>
                      </ul>
                  </li>

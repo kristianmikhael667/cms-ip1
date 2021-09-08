@@ -4,6 +4,8 @@ namespace App\Controllers\Admin\Dataadmin;
 
 use App\Controllers\Base\BaseController;
 use App\Models\Admin\DataAdmins\DataAdmins;
+use App\Models\Admin\DataCustomers\DataCustomers;
+use App\Models\Admin\DataUsers\DataUsers;
 
 class Dataadmin extends BaseController
 {
@@ -11,7 +13,11 @@ class Dataadmin extends BaseController
     public function __construct()
     {
         $this->dataAdmins = new DataAdmins();
+        $this->dataCustomers = new DataCustomers();
+        $this->dataUsers = new DataUsers();
     }
+
+    // View Data Admin
     public function index()
     {
         $data = [
@@ -22,6 +28,29 @@ class Dataadmin extends BaseController
         return view('admin/dataadmin/index', $data);
     }
 
+    // View Data Customers
+    public function datacustomer()
+    {
+        $data = [
+            'title' => 'List Customers',
+            'customers' => $this->dataCustomers->getDataCustomer()
+        ];
+
+        return view('admin/datacustomers/index', $data);
+    }
+
+    // View Data Users
+    public function datauser()
+    {
+        $data = [
+            'title' => 'List Users',
+            'users' => $this->dataUsers->getDataUsers()
+        ];
+
+        return view('admin/datausers/index', $data);
+    }
+
+    // View Create Admin
     public function create()
     {
         $data = [
@@ -31,9 +60,18 @@ class Dataadmin extends BaseController
         return view('admin/dataadmin/create', $data);
     }
 
+    public function create_customer()
+    {
+        $data = [
+            'title' => 'Create Customer',
+            'validation' => \Config\Services::validation()
+        ];
+        return view('admin/datacustomers/create', $data);
+    }
+
+    // Post Data Admin
     public function store()
     {
-        //validasi input
         if (!$this->validate(
             [
                 'username' => [
@@ -61,7 +99,7 @@ class Dataadmin extends BaseController
                     ]
                 ],
                 'upload_logo' => [
-                    'rules' => 'max_size[upload_logo,1024]|is_image[upload_logo]|mime_in[upload_logo,image/jpg,image/jpeg, image/png]',
+                    'rules' => 'max_size[upload_logo,1024]|is_image[upload_logo]|mime_in[upload_logo,image/jpg,image/jpeg,image/png]',
                     'errors' => [
                         'max_size' => 'Ukuran Gambar diatas 1 MB',
                         'is_image' => 'Bukan gambar',
@@ -75,34 +113,93 @@ class Dataadmin extends BaseController
             return redirect()->to('/admin/create-admin')->withInput();
         }
 
-        // ambil gambar
         $fileSampul = $this->request->getFile('upload_logo');
 
-        //apakah tidak ada gambar diupload
         if ($fileSampul->getError() == 4) {
             $namaSampul = 'defaultimg.png';
         } else {
-            //generate nama sampul random
             $namaSampul = $fileSampul->getRandomName();
 
-            //pindahkan ke folder img
             $fileSampul->move('img', $namaSampul);
         }
-        // dd(csrf_hash());
         $this->dataAdmins->save([
             'id_admin' => csrf_hash(),
             'username' => $this->request->getVar('username'),
-            'nama_perusahaan' => $this->request->getVar('penulis'),
             'alamat' => $this->request->getVar('alamat'),
             'email' => $this->request->getVar('email'),
-            // 'password' => $this->request->getVar('password'),
             'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT),
-
             'upload_logo' => $namaSampul,
             'Status' => $this->request->getVar('status'),
         ]);
 
-        session()->setFlashdata('pesan', 'Data berhasil ditambahkan.');
+        session()->setFlashdata('pesan', 'Data Admin Success Created.');
         return redirect()->to('/admin/list-admin');
+    }
+
+    // Post Data Customer
+    public function store_customer()
+    {
+        if (!$this->validate(
+            [
+                'username' => [
+                    'rules' => 'required|is_unique[tbl_customer.username]|is_unique[tbl_user.username]|is_unique[tbl_customer.username]',
+                    'errors' => [
+                        'required' => '{field} wajib diisi.',
+                        'is_unique' => '{field} sudah terdaftar'
+                    ]
+                ],
+                'password' => [
+                    'rules' => 'required|is_unique[tbl_customer.password]',
+                    'errors' => [
+                        'required' => '{field} wajib diisi.',
+                    ]
+                ],
+                'nama_perusahaan' => [
+                    'rules' => 'required|is_unique[tbl_customer.nama_perusahaan]',
+                    'errors' => [
+                        'required' => '{field} wajib diisi.',
+                    ]
+                ],
+                'alamat' => [
+                    'rules' => 'required|is_unique[tbl_customer.alamat]',
+                    'errors' => [
+                        'required' => '{field} wajib diisi.',
+                    ]
+                ],
+                'upload_logo' => [
+                    'rules' => 'max_size[upload_logo,1024]|is_image[upload_logo]|mime_in[upload_logo,image/jpg,image/jpeg,image/png]',
+                    'errors' => [
+                        'max_size' => 'Ukuran Gambar diatas 1 MB',
+                        'is_image' => 'Bukan gambar',
+                        'mime_in' => 'Bukan JPG, JPEG, PNG',
+                        'required' => '{field} wajib diupload'
+                    ]
+                ]
+            ]
+        )) {
+
+            return redirect()->to('/admin/create-customer')->withInput();
+        }
+        $fileSampul = $this->request->getFile('upload_logo');
+
+        if ($fileSampul->getError() == 4) {
+            $namaSampul = 'defaultimg.png';
+        } else {
+            $namaSampul = $fileSampul->getRandomName();
+
+            $fileSampul->move('img', $namaSampul);
+        }
+        $this->dataCustomers->save([
+            'id_customer' => csrf_hash(),
+            'username' => $this->request->getVar('username'),
+            'nama_perusahaan' => $this->request->getVar('nama_perusahaan'),
+            'alamat' => $this->request->getVar('alamat'),
+            'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT),
+            'upload_logo' => $namaSampul,
+            'Status' => $this->request->getVar('status'),
+        ]);
+
+        session()->setFlashdata('pesan', 'Data Customer Success Created.');
+        return redirect()->to('/admin/list-customers');
     }
 }

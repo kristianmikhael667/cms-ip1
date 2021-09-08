@@ -16,12 +16,12 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-flex align-items-center justify-content-between">
-                                <h4 class="mb-0 font-size-18"><i class="mdi mdi-account-multiple-plus"></i> Form Create Admin</h4>
+                                <h4 class="mb-0 font-size-18"><i class="mdi mdi-account-multiple-plus"></i> Form Create Customer</h4>
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Admin</a></li>
-                                        <li class="breadcrumb-item active">Create Admin</li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">Customer</a></li>
+                                        <li class="breadcrumb-item active">Create Customer</li>
                                     </ol>
                                 </div>
                             </div>
@@ -33,7 +33,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <div class="container">
-                                        <form action="<?= base_url('/admin/store') ?>" method="POST" enctype="multipart/form-data">
+                                        <form action="<?= base_url('/admin/store_customer') ?>" method="POST" enctype="multipart/form-data">
                                             <?= csrf_field(); ?>
 
                                             <div class="row">
@@ -53,10 +53,17 @@
                                                         </div>
                                                     </div>
                                                     <div class="row mb-3">
-                                                        <label for="email" class="col-form-label">* Email Address</label>
-                                                        <input placeholder="Input Email" type="email" class="form-control <?= ($validation->hasError('email')) ? 'is-invalid' : ''; ?>" id="email" name="email" autofocus value="<?= old('email'); ?>">
+                                                        <label class="col-form-label">Choose Name Company</label>
+
+                                                        <select name="nama_perusahaan" class="custom-select <?= ($validation->hasError('nama_perusahaan')) ? 'is-invalid' : ''; ?>">
+                                                            <option disabled selected>Open this select menu</option>
+                                                            <option value="PT Sinambela">PT Sinambela</option>
+                                                            <option value="PT Nainggolan">PT Nainggolan</option>
+                                                            <option value="PT Tarihoran">PT Tarihoran</option>
+                                                            <option value="PT Sinurat">PT Sinurat</option>
+                                                        </select>
                                                         <div class="invalid-feedback">
-                                                            <?= $validation->getError('email'); ?>
+                                                            <?= $validation->getError('nama_perusahaan'); ?>
                                                         </div>
                                                     </div>
 
@@ -126,7 +133,7 @@
                                             </div>
                                             <div class="row">
                                                 <div class="col-5">
-                                                    <button type="submit" class="btn btn-primary">Create Admin</button>
+                                                    <button type="submit" class="btn btn-primary">Create Customer</button>
                                                 </div>
                                             </div>
                                         </form>

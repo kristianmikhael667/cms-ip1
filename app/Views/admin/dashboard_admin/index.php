@@ -34,21 +34,22 @@
                                 <div class="card-body">
                                     <div class="row">
                                         <div class="col-4">
+
                                             <div class="text-center" dir="ltr">
                                                 <h4>Data Admin</h4>
-                                                <input readonly data-plugin="knob" data-width="180" data-height="180" data-min="-100" data-fgColor="#00a7e1" data-displayPrevious=true data-angleOffset=-125 data-angleArc=250 value="2" />
+                                                <input readonly data-plugin="knob" data-width="180" data-height="180" data-min="-100" data-fgColor="#00a7e1" data-displayPrevious=true data-angleOffset=-125 data-angleArc=<?= totalsadmin();  ?> value="<?= totalsadmin();  ?>" />
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="text-center" dir="ltr">
                                                 <h4>Data Customer</h4>
-                                                <input readonly data-plugin="knob" data-width="180" data-height="180" data-min="-100" data-fgColor="#00a7e1" data-displayPrevious=true data-angleOffset=-125 data-angleArc=250 value="7" />
+                                                <input readonly data-plugin="knob" data-width="180" data-height="180" data-min="-100" data-fgColor="#00a7e1" data-displayPrevious=true data-angleOffset=-125 data-angleArc=<?= totalscustomers();  ?> value="<?= totalscustomers();  ?>" />
                                             </div>
                                         </div>
                                         <div class="col-4">
                                             <div class="text-center" dir="ltr">
                                                 <h4>Data User</h4>
-                                                <input readonly data-plugin="knob" data-width="180" data-height="180" data-min="-100" data-fgColor="#00a7e1" data-displayPrevious=true data-angleOffset=-125 data-angleArc=250 value="18" />
+                                                <input readonly data-plugin="knob" data-width="180" data-height="180" data-min="-100" data-fgColor="#00a7e1" data-displayPrevious=true data-angleOffset=-125 data-angleArc=<?= totalusers();  ?> value="<?= totalusers();  ?>" />
                                             </div>
                                         </div>
 

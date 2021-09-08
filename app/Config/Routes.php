@@ -21,6 +21,10 @@ $routes->group('admin', function ($routes) {
 	$routes->get('list-admin', 'Dataadmin::index', ['namespace' => 'App\Controllers\Admin\Dataadmin']);
 	$routes->get('create-admin', 'Dataadmin::create', ['namespace' => 'App\Controllers\Admin\Dataadmin']);
 	$routes->post('store', 'Dataadmin::store', ['namespace' => 'App\Controllers\Admin\Dataadmin']);
+	$routes->get('list-customers', 'Dataadmin::datacustomer', ['namespace' => 'App\Controllers\Admin\Dataadmin']);
+	$routes->get('create-customer', 'Dataadmin::create_customer', ['namespace' => 'App\Controllers\Admin\Dataadmin']);
+	$routes->post('store_customer', 'Dataadmin::store_customer', ['namespace' => 'App\Controllers\Admin\Dataadmin']);
+	$routes->get('list-users', 'Dataadmin::datauser', ['namespace' => 'App\Controllers\Admin\Dataadmin']);
 });
 
 $routes->group('customer', function ($routes) {

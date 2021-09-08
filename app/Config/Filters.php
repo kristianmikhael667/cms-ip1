@@ -41,7 +41,10 @@ class Filters extends BaseConfig
 				'/',
 				'/admin/dashboard-admin',
 				'/admin/list-admin',
-				'dashboard-customer'
+				'/admin/list-users',
+				'/admin/create-customer',
+				'/admin/list-customers',
+				'/admin/create-admin'
 			],
 			'after' => [
 				'auth/login'
