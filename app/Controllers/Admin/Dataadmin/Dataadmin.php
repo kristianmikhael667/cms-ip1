@@ -39,6 +39,15 @@ class Dataadmin extends BaseController
         return view('admin/datacustomers/index', $data);
     }
 
+    public function customer_detail()
+    {
+
+        $id_customer = $this->request->getVar('id_customer');
+
+        $respon = $this->dataCustomers->getIDDataCustomer($id_customer);
+        echo json_encode($respon);
+    }
+
     // View Data Users
     public function datauser()
     {
@@ -123,7 +132,7 @@ class Dataadmin extends BaseController
             $fileSampul->move('img', $namaSampul);
         }
         $this->dataAdmins->save([
-            'id_admin' => csrf_hash(),
+            'id_admin' => random_string('nozero', 12),
             'username' => $this->request->getVar('username'),
             'alamat' => $this->request->getVar('alamat'),
             'email' => $this->request->getVar('email'),
@@ -190,7 +199,7 @@ class Dataadmin extends BaseController
             $fileSampul->move('img', $namaSampul);
         }
         $this->dataCustomers->save([
-            'id_customer' => csrf_hash(),
+            'id_customer' => random_string('nozero', 12),
             'username' => $this->request->getVar('username'),
             'nama_perusahaan' => $this->request->getVar('nama_perusahaan'),
             'alamat' => $this->request->getVar('alamat'),

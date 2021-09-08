@@ -1,20 +1,22 @@
 <script>
-    $(document).ready(function() {
-
-        // get Edit Product
-        $('.btn-edit').on('click', function() {
-            // get data from button edit
-            const username = $(this).data('name');
-            console.log(username);
-            const name = $(this).data('name');
-            const price = $(this).data('price');
-            const category = $(this).data('category_id');
-            // Set data to Form Edit
-            $('.username').val(username);
-
-            // Call Modal Edit
-            $('#datacustomer').modal('show');
+    const baseUrl = '<?= base_url(); ?>';
+</script>
+<script>
+    detailcustomer = (id_customer) => {
+        $('#datacustomer').modal('show');
+        let fd = new FormData();
+        fd.append('id_customer', id_customer);
+        $.ajax({
+            type: "POST",
+            url: `${baseUrl}/admin/customer_detail`,
+            cache: false,
+            contentType: false,
+            processData: false,
+            data: fd,
+            success: function(data) {
+                let result = JSON.parse(data)
+                console.log(result);
+            }
         });
-
-    });
+    }
 </script>

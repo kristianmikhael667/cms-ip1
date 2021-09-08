@@ -55,7 +55,7 @@
                                                     <td><?= $customer->nama_perusahaan ?></td>
                                                     <td><?= $customer->Status ?></td>
                                                     <td>
-                                                        <a href="#" id="btn-detail" class="btn btn-primary" data-id="<?= $customer->id_customer; ?>"><i class="mdi mdi-eye-outline"></i></a>
+                                                        <a href="#" onclick="detailcustomer(<?= $customer->id_customer ?>)" class="btn btn-primary"><i class="mdi mdi-eye-outline"></i></a>
                                                         <a href="#" class="btn btn-info" data-id="<?= $customer->id_customer; ?>"><i class="mdi mdi-account-circle"></i></a>
                                                         <a href="#" class="btn btn-warning" data-id="<?= $customer->id_customer; ?>"><i class="mdi mdi-pencil"></i></a>
                                                         <a href="#" class="btn btn-danger" data-id="<?= $customer->id_customer; ?>"><i class="mdi mdi-delete-empty"></i></a>
@@ -73,14 +73,17 @@
             </div>
         </div>
 
-
+        <!-- Khusus Modal -->
+        <?= $this->include('Views/admin/datacustomers/modal_customer') ?>
 
         <!-- Footer -->
         <?= $this->include('Views/templates_admin/footer') ?>
     </div>
     </div>
-    <!-- Khusus Modal -->
-    <?= $this->include('Views/admin/datacustomers/modal_customer') ?>
+
+    <!-- Jquery Get Customer -->
+    <?= $this->include('Views/templates_admin/getbyiddatacustomer') ?>
+
     <?= $this->include('Views/templates_admin/jquery') ?>
 </body>
 

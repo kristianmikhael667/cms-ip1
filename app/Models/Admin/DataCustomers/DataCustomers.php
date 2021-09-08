@@ -20,4 +20,13 @@ class DataCustomers extends Model
 
         return $this->where(['username' => $username])->first();
     }
+
+    public function getIDDataCustomer($id = false)
+    {
+        if ($id == false) {
+            return $this->findAll();
+        }
+
+        return $this->where(['id_customer' => $id])->first();
+    }
 }
