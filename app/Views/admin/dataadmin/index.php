@@ -54,7 +54,7 @@
 
                                                     <td>
                                                         <a href="#" onclick="detailAdmin(<?= $admin->id ?>)" class="btn btn-primary"><i class="mdi mdi-eye-outline"></i></a>
-                                                        <a href="#" onclick="editAdmin(<?= $admin->id ?>)" class="btn btn-warning"><i class="mdi mdi-pencil"></i></a>
+                                                        <a href="/admin/editadmin/<?= $admin->id_admin ?>" class="btn btn-warning"><i class="mdi mdi-pencil"></i></a>
                                                         <a href="#" onclick="deleteAdmin('<?= $admin->id ?>','<?= $admin->username ?>')" class="btn btn-danger"><i class="mdi mdi-delete-empty"></i></a>
                                                     </td>
                                                 </tr>
@@ -71,7 +71,6 @@
 
         <!-- Khusus Modal -->
         <?= $this->include('Views/admin/dataadmin/modal_admin') ?>
-        <?= $this->include('Views/admin/dataadmin/modal_admin_edit') ?>
         <!-- Footer -->
         <?= $this->include('Views/templates_admin/footer') ?>
     </div>

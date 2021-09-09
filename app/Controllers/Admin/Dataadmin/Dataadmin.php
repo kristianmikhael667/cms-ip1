@@ -109,6 +109,40 @@ class Dataadmin extends BaseController
         return view('admin/datausers/create', $data);
     }
 
+    // View edit admin
+    public function editadmin($id_admin)
+    {
+        $data = [
+            'title' => 'Edit Data Admin',
+            'validation' => \Config\Services::validation(),
+            'admin' => $this->dataAdmins->getIdAdmin($id_admin)
+        ];
+
+        return view('admin/dataadmin/edit', $data);
+    }
+
+    public function updateadmin($id)
+    {
+        $fileSampul = $this->request->getFile('sampul');
+
+        if ($fileSampul->getError() == 4) {
+            $namaSampul = 'sampulLama';
+        } else {
+            $namaSampul = $fileSampul->getRandomName();
+
+            $fileSampul->move('img', 'sampulLama');
+        }
+        $this->dataAdmins->save([
+            'id' => $id,
+            'alamat' => $this->request->getVar('addressadmin'),
+            'email' => $this->request->getVar('emailadmin'),
+            'upload_logo' => $namaSampul,
+            'Status' => $this->request->getVar('statusadmin'),
+        ]);
+
+        session()->setFlashdata('pesan', 'Data Admin Success Created.');
+        return redirect()->to('/admin/list-admin');
+    }
     // Post Data Admin
     public function store()
     {
