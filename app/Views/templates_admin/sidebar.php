@@ -45,7 +45,7 @@
                      </a>
                      <ul class="sub-menu" aria-expanded="false">
                          <li><a href="<?= base_url('/admin/list-users') ?>">List Users</a></li>
-                         <li><a href="email-read.html">Create Users</a></li>
+                         <li><a href="<?= base_url('/admin/create-user') ?>">Create Users</a></li>
                      </ul>
                  </li>
 

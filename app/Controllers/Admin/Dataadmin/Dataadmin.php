@@ -12,6 +12,7 @@ class Dataadmin extends BaseController
     protected $dataAdmins;
     public function __construct()
     {
+        // All Modals
         $this->dataAdmins = new DataAdmins();
         $this->dataCustomers = new DataCustomers();
         $this->dataUsers = new DataUsers();
@@ -39,12 +40,30 @@ class Dataadmin extends BaseController
         return view('admin/datacustomers/index', $data);
     }
 
+    // Get By ID Customer Detail
     public function customer_detail()
     {
 
-        $id_customer = $this->request->getVar('id_customer');
+        $id = $this->request->getVar('id');
 
-        $respon = $this->dataCustomers->getIDDataCustomer($id_customer);
+        $respon = $this->dataCustomers->getIDDataCustomer($id);
+        echo json_encode($respon);
+    }
+
+    // Get By ID Admin Detail
+    public function admin_detail()
+    {
+        $id = $this->request->getVar('id');
+
+        $respon = $this->dataAdmins->getDataByIdAdmin($id);
+        echo json_encode($respon);
+    }
+
+    // Get User By ID Customer
+    public function user_by_customer_detail()
+    {
+        $id_customer = $this->request->getVar('id_customer');
+        $respon = $this->dataUsers->getDataUsersbycustomer($id_customer);
         echo json_encode($respon);
     }
 
@@ -69,6 +88,7 @@ class Dataadmin extends BaseController
         return view('admin/dataadmin/create', $data);
     }
 
+    // View Create Customer
     public function create_customer()
     {
         $data = [
@@ -76,6 +96,17 @@ class Dataadmin extends BaseController
             'validation' => \Config\Services::validation()
         ];
         return view('admin/datacustomers/create', $data);
+    }
+
+    // View Create Users
+    public function create_user()
+    {
+        $data = [
+            'title' => 'Create Users',
+            'validation' => \Config\Services::validation(),
+            'customers' => $this->dataCustomers->getDataCustomer()
+        ];
+        return view('admin/datausers/create', $data);
     }
 
     // Post Data Admin
@@ -210,5 +241,96 @@ class Dataadmin extends BaseController
 
         session()->setFlashdata('pesan', 'Data Customer Success Created.');
         return redirect()->to('/admin/list-customers');
+    }
+
+    // Delete Data Customer
+    public function deletecustomer($id)
+    {
+
+        $usercustomer = $this->dataCustomers->find($id);
+
+        if ($usercustomer->upload_logo != 'defaultimg.png') {
+            unlink('img/' . $usercustomer->upload_logo);
+        }
+
+        $usercustom = $this->dataCustomers->find();
+        $users = $this->dataUsers->find();
+        foreach ($usercustom as $custom) {
+            if ($id == $custom->id) {
+                foreach ($users as $user) {
+                    if ($user->id_customer == $custom->id_customer) {
+                        $daak = $this->dataCustomers->delete($id);
+                        $duuk = $this->dataUsers->delete($user->id);
+                        echo json_encode($daak);
+                    }
+                }
+            }
+        }
+    }
+
+    // Post Data User
+    public function store_user()
+    {
+        if (!$this->validate(
+            [
+                'username' => [
+                    'rules' => 'required|is_unique[tbl_customer.username]|is_unique[tbl_user.username]|is_unique[tbl_customer.username]',
+                    'errors' => [
+                        'required' => '{field} wajib diisi.',
+                        'is_unique' => '{field} sudah terdaftar'
+                    ]
+                ],
+                'password' => [
+                    'rules' => 'required|is_unique[tbl_user.password]',
+                    'errors' => [
+                        'required' => '{field} wajib diisi.',
+                    ]
+                ],
+                'id_customer' => [
+                    'errors' => [
+                        'required' => '{field} wajib diisi.',
+                    ]
+                ],
+                'alamat' => [
+                    'rules' => 'required|is_unique[tbl_user.alamat]',
+                    'errors' => [
+                        'required' => '{field} wajib diisi.',
+                    ]
+                ],
+                'upload_logo' => [
+                    'rules' => 'max_size[upload_logo,1024]|is_image[upload_logo]|mime_in[upload_logo,image/jpg,image/jpeg,image/png]',
+                    'errors' => [
+                        'max_size' => 'Ukuran Gambar diatas 1 MB',
+                        'is_image' => 'Bukan gambar',
+                        'mime_in' => 'Bukan JPG, JPEG, PNG',
+                        'required' => '{field} wajib diupload'
+                    ]
+                ]
+            ]
+        )) {
+
+            return redirect()->to('/admin/create-user')->withInput();
+        }
+        $fileSampul = $this->request->getFile('upload_logo');
+
+        if ($fileSampul->getError() == 4) {
+            $namaSampul = 'defaultimg.png';
+        } else {
+            $namaSampul = $fileSampul->getRandomName();
+
+            $fileSampul->move('img', $namaSampul);
+        }
+        $this->dataUsers->save([
+            'id_user' => random_string('nozero', 12),
+            'id_customer' => $this->request->getVar('id_customer'),
+            'username' => $this->request->getVar('username'),
+            'alamat' => $this->request->getVar('alamat'),
+            'password' => password_hash($this->request->getVar('password'), PASSWORD_BCRYPT),
+            'upload_logo' => $namaSampul,
+            'Status' => $this->request->getVar('status'),
+        ]);
+
+        session()->setFlashdata('pesan', 'Data Customer Success Created.');
+        return redirect()->to('/admin/list-users');
     }
 }

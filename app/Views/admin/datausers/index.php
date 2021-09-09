@@ -37,9 +37,8 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>ID Admin</th>
+                                                <th>ID User</th>
                                                 <th>Username</th>
-                                                <th>Name Company</th>
                                                 <th>Action</th>
                                                 <th>Status</th>
                                             </tr>
@@ -52,7 +51,6 @@
                                                     <td><?= $i++ ?></td>
                                                     <td><?= $user->id_user ?></td>
                                                     <td><?= $user->username ?></td>
-                                                    <td><?= $user->nama_perusahaan ?></td>
                                                     <td><?= $user->Status ?></td>
                                                     <td>Edit</td>
                                                 </tr>

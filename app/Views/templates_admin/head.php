@@ -23,4 +23,7 @@
     <!-- Plugins css -->
     <link href="<?= base_url('/assets/libs/dropzone/min/dropzone.min.css') ?>" rel="stylesheet" type="text/css" />
 
+    <!-- Dropify -->
+    <link rel="stylesheet" type="text/css" href="<?= base_url("/plugins/dropify/css/dropify.min.css") ?>">
+
 </head>

@@ -7,10 +7,10 @@ use CodeIgniter\Model;
 class DataAdmins extends Model
 {
     protected $table = 'tbl_admin';
-    // protected $primaryKey = "id_admin";
+    protected $primaryKey = "id";
     protected $returnType = "object";
     protected $useTimestamps = true;
-    protected $allowedFields = ['id_admin', 'username', 'alamat', 'email', 'password', 'upload_logo', 'Status'];
+    protected $allowedFields = ['id', 'id_admin', 'username', 'alamat', 'email', 'password', 'upload_logo', 'Status'];
 
     public function getDataAdmin($username = false)
     {
@@ -19,5 +19,9 @@ class DataAdmins extends Model
         }
 
         return $this->where(['username' => $username])->first();
+    }
+    public function getDataByIdAdmin($id)
+    {
+        return $this->where(['id' => $id])->first();
     }
 }

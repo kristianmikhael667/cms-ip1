@@ -1,6 +1,6 @@
 <!--  Modal content for the above example -->
 <div class="modal fade" id="datacustomer" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
+    <div class="modal-dialog modal-md">
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title mt-0" id="myExtraLargeModalLabel">Customers <p class="username"></p>
@@ -10,18 +10,55 @@
                 </button>
             </div>
             <div class="modal-body">
-                <p>Cras mattis consectetur purus sit amet fermentum.
-                    Cras justo odio, dapibus ac facilisis in,
-                    egestas eget quam. Morbi leo risus, porta ac
-                    consectetur ac, vestibulum at eros.</p>
-                <p>Praesent commodo cursus magna, vel scelerisque
-                    nisl consectetur et. Vivamus sagittis lacus vel
-                    augue laoreet rutrum faucibus dolor auctor.</p>
-                <p class="mb-0">Aenean lacinia bibendum nulla sed consectetur.
-                    Praesent commodo cursus magna, vel scelerisque
-                    nisl consectetur et. Donec sed odio dui. Donec
-                    ullamcorper nulla non metus auctor
-                    fringilla.</p>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-4">
+                            <img id="detail_customer_image" style="width: 120px; height: 140px;" class="img-responsive">
+                        </div>
+                        <div class="col-8">
+                            <div class="row">
+                                <div class="col-6">
+                                    <span>ID Customer : </span>
+                                </div>
+                                <div class="col-6">
+                                    <p id="detail_id"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <span>Username : </span>
+                                </div>
+                                <div class="col-6">
+                                    <p id="detail_username"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <span>Address : </span>
+                                </div>
+                                <div class="col-6">
+                                    <p id="detail_alamat"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <span>Name Company : </span>
+                                </div>
+                                <div class="col-6">
+                                    <p id="detail_perusahaan"></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <span>Status : </span>
+                                </div>
+                                <div class="col-6">
+                                    <p id="detail_status"></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div><!-- /.modal-content -->
     </div><!-- /.modal-dialog -->

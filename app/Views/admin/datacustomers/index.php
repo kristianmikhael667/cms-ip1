@@ -37,7 +37,7 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>ID Admin</th>
+                                                <th>ID Customer</th>
                                                 <th>Username</th>
                                                 <th>Name Company</th>
                                                 <th>Action</th>
@@ -55,10 +55,10 @@
                                                     <td><?= $customer->nama_perusahaan ?></td>
                                                     <td><?= $customer->Status ?></td>
                                                     <td>
-                                                        <a href="#" onclick="detailcustomer(<?= $customer->id_customer ?>)" class="btn btn-primary"><i class="mdi mdi-eye-outline"></i></a>
-                                                        <a href="#" class="btn btn-info" data-id="<?= $customer->id_customer; ?>"><i class="mdi mdi-account-circle"></i></a>
-                                                        <a href="#" class="btn btn-warning" data-id="<?= $customer->id_customer; ?>"><i class="mdi mdi-pencil"></i></a>
-                                                        <a href="#" class="btn btn-danger" data-id="<?= $customer->id_customer; ?>"><i class="mdi mdi-delete-empty"></i></a>
+                                                        <a href="#" onclick="detailcustomer(<?= $customer->id ?>)" class="btn btn-primary"><i class="mdi mdi-eye-outline"></i></a>
+                                                        <a href="#" onclick="detailUserbycustomer('<?= $customer->id_customer ?>','<?= $customer->username ?>')" class="btn btn-info"><i class="mdi mdi-account-circle"></i></a>
+                                                        <a href="#" class="btn btn-warning" data-id="<?= $customer->id; ?>"><i class="mdi mdi-pencil"></i></a>
+                                                        <a href="#" onclick="deleteCustomer('<?= $customer->id ?>','<?= $customer->username ?>')" class="btn btn-danger"><i class="mdi mdi-delete-empty"></i></a>
                                                     </td>
                                                 </tr>
                                             <?php endforeach; ?>
@@ -75,7 +75,7 @@
 
         <!-- Khusus Modal -->
         <?= $this->include('Views/admin/datacustomers/modal_customer') ?>
-
+        <?= $this->include('Views/admin/datacustomers/modal_users') ?>
         <!-- Footer -->
         <?= $this->include('Views/templates_admin/footer') ?>
     </div>

@@ -19,13 +19,18 @@ $routes->group('admin', function ($routes) {
 	$routes->get('/', 'Dashboard::index', ['namespace' => 'App\Controllers\Admin\Dashboard']);
 	$routes->get('dashboard-admin', 'Dashboard::index', ['namespace' => 'App\Controllers\Admin\Dashboard']);
 	$routes->get('list-admin', 'Dataadmin::index', ['namespace' => 'App\Controllers\Admin\Dataadmin']);
+	$routes->post('admin_detail', 'Dataadmin::admin_detail', ['namespace' => 'App\Controllers\Admin\Dataadmin']);
 	$routes->get('create-admin', 'Dataadmin::create', ['namespace' => 'App\Controllers\Admin\Dataadmin']);
 	$routes->post('store', 'Dataadmin::store', ['namespace' => 'App\Controllers\Admin\Dataadmin']);
 	$routes->get('list-customers', 'Dataadmin::datacustomer', ['namespace' => 'App\Controllers\Admin\Dataadmin']);
 	$routes->get('create-customer', 'Dataadmin::create_customer', ['namespace' => 'App\Controllers\Admin\Dataadmin']);
 	$routes->post('store_customer', 'Dataadmin::store_customer', ['namespace' => 'App\Controllers\Admin\Dataadmin']);
 	$routes->post('customer_detail', 'Dataadmin::customer_detail', ['namespace' => 'App\Controllers\Admin\Dataadmin']);
+	$routes->post('user_by_customer_detail', 'Dataadmin::user_by_customer_detail', ['namespace' => 'App\Controllers\Admin\Dataadmin']);
 	$routes->get('list-users', 'Dataadmin::datauser', ['namespace' => 'App\Controllers\Admin\Dataadmin']);
+	$routes->get('create-user', 'Dataadmin::create_user', ['namespace' => 'App\Controllers\Admin\Dataadmin']);
+	$routes->post('store_user', 'Dataadmin::store_user', ['namespace' => 'App\Controllers\Admin\Dataadmin']);
+	$routes->delete('deletecustomer/(:any)', 'Dataadmin::deletecustomer/$1', ['namespace' => 'App\Controllers\Admin\Dataadmin']);
 });
 
 $routes->group('customer', function ($routes) {

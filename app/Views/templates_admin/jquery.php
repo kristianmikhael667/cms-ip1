@@ -33,3 +33,21 @@
 <script src="<?= base_url('/assets/js/pages/datatables.init.js') ?>"></script>
 
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script type="text/javascript" src="<?= base_url("/plugins/dropify/js/dropify.min.js") ?>"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('.dropify').dropify({
+            messages: {
+                'default': 'Drag and drop a file here or click',
+                'replace': 'Drag and drop or click to replace',
+                'remove': 'Remove',
+                'error': 'Ooops, something wrong happended.'
+            },
+            error: {
+                'fileSize': 'The file size is too big (1M max).'
+            }
+        });
+    });
+</script>

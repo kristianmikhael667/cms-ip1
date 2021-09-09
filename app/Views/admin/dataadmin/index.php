@@ -36,9 +36,9 @@
                                         <thead>
                                             <tr>
                                                 <th>No</th>
-                                                <th>ID Admin</th>
                                                 <th>Username</th>
                                                 <th>Email</th>
+                                                <th>Status</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
@@ -48,10 +48,15 @@
                                             ?>
                                                 <tr>
                                                     <td><?= $i++ ?></td>
-                                                    <td><?= $admin->id_admin ?></td>
                                                     <td><?= $admin->username ?></td>
                                                     <td><?= $admin->email ?></td>
-                                                    <td>Edit</td>
+                                                    <td><?= $admin->Status ?></td>
+
+                                                    <td>
+                                                        <a href="#" onclick="detailAdmin(<?= $admin->id ?>)" class="btn btn-primary"><i class="mdi mdi-eye-outline"></i></a>
+                                                        <a href="#" onclick="editAdmin(<?= $admin->id ?>)" class="btn btn-warning"><i class="mdi mdi-pencil"></i></a>
+                                                        <a href="#" onclick="deleteAdmin('<?= $admin->id ?>','<?= $admin->username ?>')" class="btn btn-danger"><i class="mdi mdi-delete-empty"></i></a>
+                                                    </td>
                                                 </tr>
                                             <?php endforeach; ?>
                                         </tbody>
@@ -64,9 +69,17 @@
             </div>
         </div>
 
+        <!-- Khusus Modal -->
+        <?= $this->include('Views/admin/dataadmin/modal_admin') ?>
+        <?= $this->include('Views/admin/dataadmin/modal_admin_edit') ?>
+        <!-- Footer -->
         <?= $this->include('Views/templates_admin/footer') ?>
     </div>
     </div>
+
+    <!-- Jquery Get Customer -->
+    <?= $this->include('Views/templates_admin/getbyiddataadmin') ?>
+
     <?= $this->include('Views/templates_admin/jquery') ?>
 
 </body>
