@@ -39,7 +39,10 @@
                                                 <input type="hidden" name="id_admin" value="<?= $admin->id_admin ?>" />
                                                 <div class="col-4">
                                                     <input type="hidden" name="sampulLama" value="<?= $admin->upload_logo ?>" />
-                                                    <input type="file" name="sampul" class="dropify" data-default-file="/img/<?= $admin->upload_logo ?>" data-height="200">
+                                                    <input type="file" name="sampul" class="dropify <?= ($validation->hasError('sampul')) ? 'is-invalid' : ''; ?>" data-default-file="/img/<?= $admin->upload_logo ?>" data-height="200">
+                                                    <div class="invalid-feedback">
+                                                        <?= $validation->getError('sampul'); ?>
+                                                    </div>
                                                 </div>
                                                 <div class="col-8">
                                                     <div class="row">
@@ -48,6 +51,7 @@
                                                         </div>
                                                         <div class="col-9">
                                                             <p><?= $admin->id_admin ?></p>
+                                                            <input type="hidden" value="<?= $admin->id_admin ?>" name="adminid">
                                                         </div>
                                                     </div>
                                                     <div class="row mb-2">
@@ -63,7 +67,10 @@
                                                             <span>Address : </span>
                                                         </div>
                                                         <div class="col-9">
-                                                            <input type="text" name="addressadmin" class="form-control" value="<?= $admin->alamat ?>">
+                                                            <input type="text" name="alamat" id="alamat" class="form-control <?= ($validation->hasError('alamat')) ? 'is-invalid' : ''; ?>" value="<?= (old('alamat')) ? old('alamat') : $admin->alamat ?>">
+                                                            <div class="invalid-feedback">
+                                                                <?= $validation->getError('alamat'); ?>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="row mb-2">
@@ -71,7 +78,10 @@
                                                             <span>Email : </span>
                                                         </div>
                                                         <div class="col-9">
-                                                            <input type="email" name="emailadmin" class="form-control" value="<?= $admin->email ?>">
+                                                            <input type="email" name="email" id="email" class="form-control <?= ($validation->hasError('email')) ? 'is-invalid' : ''; ?>" autofocus value=" <?= (old('email')) ? old('email') :  $admin->email ?>">
+                                                            <div class="invalid-feedback">
+                                                                <?= $validation->getError('email'); ?>
+                                                            </div>
                                                         </div>
                                                     </div>
 

@@ -26,6 +26,11 @@ class DataAdmins extends Model
         return $this->where(['id_admin' => $id_admin])->first();
     }
 
+    public function getEmailAdmin($email)
+    {
+        return $this->where(['email' => $email])->first();
+    }
+
     public function getDataByIdAdmin($id)
     {
         return $this->where(['id' => $id])->first();

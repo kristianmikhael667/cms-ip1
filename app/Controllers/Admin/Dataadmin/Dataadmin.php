@@ -123,19 +123,59 @@ class Dataadmin extends BaseController
 
     public function updateadmin($id)
     {
+        // cek data lama
+        $datalama = $this->dataAdmins->getIdAdmin($this->request->getVar('id_admin'));
+
+        if ($datalama->email == $this->request->getVar('email')) {
+            $rule_data = 'required';
+        } else if ($datalama->alamat == $this->request->getVar('alamat')) {
+            $rule_data = 'required';
+        } else {
+            $rule_data = 'required|is_unique[tbl_admin.email]';
+        }
+
+
+        if (!$this->validate(
+            [
+                'email' => [
+                    'rules' => $rule_data,
+                    'errors' => [
+                        'required' => '{field} wajib diisi.',
+                        'is_unique' => '{field} sudah terdaftar'
+
+                    ]
+                ],
+                'alamat' => [
+                    'rules' => $rule_data,
+                    'errors' => [
+                        'required' => '{field} wajib diisi.',
+                    ]
+                ],
+                'sampul' => [
+                    'rules' => 'max_size[sampul,1024]|is_image[sampul]|mime_in[sampul,image/jpg,image/jpeg,image/png]',
+                    'errors' => [
+                        'max_size' => 'Ukuran Gambar diatas 1 MB',
+                        'is_image' => 'Bukan gambar',
+                        'mime_in' => 'Bukan JPG, JPEG, PNG'
+                    ]
+                ]
+            ]
+        )) {
+            return redirect()->to('/admin/editadmin/' . $this->request->getVar('adminid'))->withInput();
+        }
         $fileSampul = $this->request->getFile('sampul');
 
         if ($fileSampul->getError() == 4) {
-            $namaSampul = 'sampulLama';
+            $namaSampul = $this->request->getVar('sampulLama');
         } else {
             $namaSampul = $fileSampul->getRandomName();
 
-            $fileSampul->move('img', 'sampulLama');
+            $fileSampul->move('img', $namaSampul);
         }
         $this->dataAdmins->save([
             'id' => $id,
-            'alamat' => $this->request->getVar('addressadmin'),
-            'email' => $this->request->getVar('emailadmin'),
+            'alamat' => $this->request->getVar('alamat'),
+            'email' => $this->request->getVar('email'),
             'upload_logo' => $namaSampul,
             'Status' => $this->request->getVar('statusadmin'),
         ]);
