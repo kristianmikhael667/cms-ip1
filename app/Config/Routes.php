@@ -36,6 +36,10 @@ $routes->group('admin', function ($routes) {
 	$routes->get('create-user', 'Dataadmin::create_user', ['namespace' => 'App\Controllers\Admin\Dataadmin']);
 	$routes->post('store_user', 'Dataadmin::store_user', ['namespace' => 'App\Controllers\Admin\Dataadmin']);
 	$routes->delete('deletecustomer/(:any)', 'Dataadmin::deletecustomer/$1', ['namespace' => 'App\Controllers\Admin\Dataadmin']);
+
+	$routes->get('list-hoc', 'Dataadmin::lists', ['namespace' => 'App\Controllers\Admin\Dataadmin']);
+	$routes->get('create-hoc', 'Dataadmin::create_hoc', ['namespace' => 'App\Controllers\Admin\Dataadmin']);
+	$routes->post('store_hoc', 'Dataadmin::store_hoc', ['namespace' => 'App\Controllers\Admin\Dataadmin']);
 });
 
 $routes->group('customer', function ($routes) {

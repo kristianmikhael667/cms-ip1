@@ -5,6 +5,7 @@ namespace App\Controllers\Admin\Dataadmin;
 use App\Controllers\Base\BaseController;
 use App\Models\Admin\DataAdmins\DataAdmins;
 use App\Models\Admin\DataCustomers\DataCustomers;
+use App\Models\Admin\DataHocs\DataHocs;
 use App\Models\Admin\DataUsers\DataUsers;
 
 class Dataadmin extends BaseController
@@ -16,6 +17,7 @@ class Dataadmin extends BaseController
         $this->dataAdmins = new DataAdmins();
         $this->dataCustomers = new DataCustomers();
         $this->dataUsers = new DataUsers();
+        $this->dataHoc = new DataHocs();
     }
 
     // View Data Admin
@@ -406,5 +408,53 @@ class Dataadmin extends BaseController
 
         session()->setFlashdata('pesan', 'Data Customer Success Created.');
         return redirect()->to('/admin/list-users');
+    }
+
+    // Get All Hoc
+    public function lists()
+    {
+        $data = [
+            'title' => 'List Customers',
+            'hocs' => $this->dataHoc->getIdHOC()
+        ];
+
+        return view('admin/datahoc/index', $data);
+    }
+
+    public function create_hoc()
+    {
+        $data = [
+            'title' => 'Create HOC',
+            'validation' => \Config\Services::validation()
+        ];
+        return view('admin/datahoc/create', $data);
+    }
+
+    public function store_hoc()
+    {
+        if (!$this->validate(
+            [
+                'name_hoc' => [
+                    'rules' => 'required|is_unique[tbl_hoc.name_hoc]',
+                    'errors' => [
+                        'required' => '{field} wajib diisi.',
+                        'is_unique' => '{field} sudah terdaftar'
+                    ]
+                ],
+
+            ]
+        )) {
+
+            return redirect()->to('/admin/create-hoc')->withInput();
+        }
+
+        $this->dataHoc->save([
+            'id_hoc' => random_string('nozero', 12),
+            'name_hoc' => $this->request->getVar('name_hoc'),
+            'status' => $this->request->getVar('status'),
+        ]);
+
+        session()->setFlashdata('pesan', 'Data HOC Success Created.');
+        return redirect()->to('/admin/list-hoc');
     }
 }
