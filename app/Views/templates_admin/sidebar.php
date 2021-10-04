@@ -44,8 +44,8 @@
                          <span>Data HOC</span>
                      </a>
                      <ul class="sub-menu" aria-expanded="false">
-                         <li><a href="<?= base_url('/admin/list-hoc') ?>">List HOC</a></li>
-                         <li><a href="<?= base_url('/admin/create-hoc') ?>">Create HOC </a></li>
+                         <li><a href="<?= base_url('/admin/list-hoc') ?>">List NOC</a></li>
+                         <li><a href="<?= base_url('/admin/create-hoc') ?>">Create NOC </a></li>
                      </ul>
                  </li>
 
