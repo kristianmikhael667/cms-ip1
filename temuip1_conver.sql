@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 10 Sep 2021 pada 14.34
+-- Waktu pembuatan: 04 Okt 2021 pada 07.10
 -- Versi server: 10.4.18-MariaDB
 -- Versi PHP: 7.3.27
 
@@ -76,6 +76,29 @@ INSERT INTO `tbl_customer` (`id`, `id_customer`, `username`, `nama_perusahaan`, 
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `tbl_hoc`
+--
+
+CREATE TABLE `tbl_hoc` (
+  `id` int(11) NOT NULL,
+  `id_hoc` varchar(255) NOT NULL,
+  `name_hoc` varchar(110) NOT NULL,
+  `status` varchar(100) NOT NULL,
+  `created_at` datetime DEFAULT NULL,
+  `updated_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tbl_hoc`
+--
+
+INSERT INTO `tbl_hoc` (`id`, `id_hoc`, `name_hoc`, `status`, `created_at`, `updated_at`) VALUES
+(1, '1321', '192.168.100.1', 'aktif', '2021-10-03 19:18:50', '2021-10-03 19:18:50'),
+(2, '132645868517', '192.168.1.0', 'AKTIF', '2021-10-03 12:24:55', '2021-10-03 12:24:55');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `tbl_user`
 --
 
@@ -117,6 +140,12 @@ ALTER TABLE `tbl_customer`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indeks untuk tabel `tbl_hoc`
+--
+ALTER TABLE `tbl_hoc`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indeks untuk tabel `tbl_user`
 --
 ALTER TABLE `tbl_user`
@@ -138,6 +167,12 @@ ALTER TABLE `tbl_admin`
 --
 ALTER TABLE `tbl_customer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT untuk tabel `tbl_hoc`
+--
+ALTER TABLE `tbl_hoc`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_user`
