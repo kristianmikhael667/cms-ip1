@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Waktu pembuatan: 04 Okt 2021 pada 07.10
+-- Waktu pembuatan: 04 Okt 2021 pada 09.22
 -- Versi server: 10.4.18-MariaDB
 -- Versi PHP: 7.3.27
 
@@ -83,6 +83,7 @@ CREATE TABLE `tbl_hoc` (
   `id` int(11) NOT NULL,
   `id_hoc` varchar(255) NOT NULL,
   `name_hoc` varchar(110) NOT NULL,
+  `ip_router` varchar(255) NOT NULL,
   `status` varchar(100) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
@@ -92,9 +93,8 @@ CREATE TABLE `tbl_hoc` (
 -- Dumping data untuk tabel `tbl_hoc`
 --
 
-INSERT INTO `tbl_hoc` (`id`, `id_hoc`, `name_hoc`, `status`, `created_at`, `updated_at`) VALUES
-(1, '1321', '192.168.100.1', 'aktif', '2021-10-03 19:18:50', '2021-10-03 19:18:50'),
-(2, '132645868517', '192.168.1.0', 'AKTIF', '2021-10-03 12:24:55', '2021-10-03 12:24:55');
+INSERT INTO `tbl_hoc` (`id`, `id_hoc`, `name_hoc`, `ip_router`, `status`, `created_at`, `updated_at`) VALUES
+(3, '1LPMOLM1IVLP', 'Router IP1', '192.169.1.1', 'AKTIF', '2021-10-04 02:22:03', '2021-10-04 02:22:03');
 
 -- --------------------------------------------------------
 
@@ -172,7 +172,7 @@ ALTER TABLE `tbl_customer`
 -- AUTO_INCREMENT untuk tabel `tbl_hoc`
 --
 ALTER TABLE `tbl_hoc`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_user`

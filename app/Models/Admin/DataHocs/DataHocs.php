@@ -12,7 +12,7 @@ class DataHocs extends Model
 
     protected $returnType = "object";
     protected $useTimestamps = true;
-    protected $allowedFields = ['id', 'id_hoc', 'name_hoc', 'status'];
+    protected $allowedFields = ['id', 'id_hoc', 'name_hoc', 'ip_router', 'status'];
 
     public function getIdHOC($id_hoc = false)
     {

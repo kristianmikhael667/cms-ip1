@@ -414,7 +414,7 @@ class Dataadmin extends BaseController
     public function lists()
     {
         $data = [
-            'title' => 'List Customers',
+            'title' => 'List NOC',
             'hocs' => $this->dataHoc->getIdHOC()
         ];
 
@@ -424,7 +424,7 @@ class Dataadmin extends BaseController
     public function create_hoc()
     {
         $data = [
-            'title' => 'Create HOC',
+            'title' => 'Create NOC',
             'validation' => \Config\Services::validation()
         ];
         return view('admin/datahoc/create', $data);
@@ -441,7 +441,13 @@ class Dataadmin extends BaseController
                         'is_unique' => '{field} sudah terdaftar'
                     ]
                 ],
-
+                'ip_router' => [
+                    'rules' => 'required|is_unique[tbl_hoc.ip_router]',
+                    'errors' => [
+                        'required' => '{field} wajib diisi.',
+                        'is_unique' => '{field} sudah terdaftar'
+                    ]
+                ],
             ]
         )) {
 
@@ -449,8 +455,9 @@ class Dataadmin extends BaseController
         }
 
         $this->dataHoc->save([
-            'id_hoc' => random_string('nozero', 12),
+            'id_hoc' => GenID(),
             'name_hoc' => $this->request->getVar('name_hoc'),
+            'ip_router' => $this->request->getVar('ip_router'),
             'status' => $this->request->getVar('status'),
         ]);
 

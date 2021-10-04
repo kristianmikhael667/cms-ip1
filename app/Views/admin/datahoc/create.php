@@ -16,12 +16,12 @@
                     <div class="row">
                         <div class="col-12">
                             <div class="page-title-box d-flex align-items-center justify-content-between">
-                                <h4 class="mb-0 font-size-18"><i class="mdi mdi-account-multiple-plus"></i> Form Create HOC</h4>
+                                <h4 class="mb-0 font-size-18"><i class="mdi mdi-account-multiple-plus"></i> Form Create NOC</h4>
 
                                 <div class="page-title-right">
                                     <ol class="breadcrumb m-0">
-                                        <li class="breadcrumb-item"><a href="javascript: void(0);">HOC</a></li>
-                                        <li class="breadcrumb-item active">Create Hoc</li>
+                                        <li class="breadcrumb-item"><a href="javascript: void(0);">NOC</a></li>
+                                        <li class="breadcrumb-item active">Create NOC</li>
                                     </ol>
                                 </div>
                             </div>
@@ -37,19 +37,32 @@
                                             <?= csrf_field(); ?>
 
                                             <div class="row">
-                                                <div class="col-6">
-                                                    <div class="row mb-3">
-                                                        <label for="username" class="col-form-label">* Name HOC</label>
-                                                        <input placeholder="Input Name HOC" type="text" class="form-control <?= ($validation->hasError('name_hoc')) ? 'is-invalid' : ''; ?>" id="name_hoc" name="name_hoc" autofocus value="<?= old('name_hoc'); ?>">
-                                                        <div class="invalid-feedback">
-                                                            <?= $validation->getError('name_hoc'); ?>
+                                                <div class="col-4">
+                                                    <div class="mr-1">
+                                                        <div class="row mb-3">
+                                                            <label for="username" class="col-form-label">* Name NOC</label>
+                                                            <input placeholder="Input Name HOC" type="text" class="form-control <?= ($validation->hasError('name_hoc')) ? 'is-invalid' : ''; ?>" id="name_hoc" name="name_hoc" autofocus value="<?= old('name_hoc'); ?>">
+                                                            <div class="invalid-feedback">
+                                                                <?= $validation->getError('name_hoc'); ?>
+                                                            </div>
                                                         </div>
                                                     </div>
 
 
 
+
                                                 </div>
-                                                <div class="col-6">
+                                                <div class="col-4">
+                                                    <div class="row mb-3">
+                                                        <label for="username" class="col-form-label">* IP Router NOC</label>
+                                                        <input placeholder="Input IP Router NOC" type="text" class="form-control <?= ($validation->hasError('ip_router')) ? 'is-invalid' : ''; ?>" id="ip_router" name="ip_router" autofocus value="<?= old('ip_router'); ?>">
+                                                        <div class="invalid-feedback">
+                                                            <?= $validation->getError('ip_router'); ?>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                                <div class="col-4">
                                                     <div class="row mt-3">
                                                         <div class="ml-5">
                                                             <h5 class="font-size-14 mb-3">* Status</h5>
@@ -76,7 +89,7 @@
 
                                             </div>
                                             <div class="row">
-                                                <button type="submit" class="btn btn-primary">Create HOC</button>
+                                                <button type="submit" class="btn btn-primary">Create NOC</button>
                                             </div>
                                         </form>
                                     </div>

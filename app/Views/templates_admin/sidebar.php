@@ -41,7 +41,7 @@
                  <li>
                      <a href="javascript: void(0);" class="has-arrow waves-effect">
                          <i class="mdi mdi-account-multiple"></i>
-                         <span>Data HOC</span>
+                         <span>Data NOC</span>
                      </a>
                      <ul class="sub-menu" aria-expanded="false">
                          <li><a href="<?= base_url('/admin/list-hoc') ?>">List NOC</a></li>
