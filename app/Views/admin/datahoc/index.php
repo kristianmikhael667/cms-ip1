@@ -38,7 +38,8 @@
                                             <tr>
                                                 <th>No</th>
                                                 <th>ID HOC</th>
-                                                <th>Name HOC</th>
+                                                <th>Name Router NOC</th>
+                                                <th>Router IP</th>
                                                 <th>Status</th>
 
                                             </tr>
@@ -51,6 +52,7 @@
                                                     <td><?= $i++ ?></td>
                                                     <td><?= $hoc->id_hoc ?></td>
                                                     <td><?= $hoc->name_hoc ?></td>
+                                                    <td><?= $hoc->ip_router ?></td>
                                                     <td><?= $hoc->status ?></td>
 
                                                 </tr>
