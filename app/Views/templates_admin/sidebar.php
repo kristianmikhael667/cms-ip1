@@ -49,7 +49,7 @@
                      </ul>
                  </li>
 
-                 <!-- <li>
+                 <li>
                      <a href="javascript: void(0);" class="has-arrow waves-effect">
                          <i class="mdi mdi-account-multiple"></i>
                          <span>Data Users</span>
@@ -58,7 +58,7 @@
                          <li><a href="<?= base_url('/admin/list-users') ?>">List Users</a></li>
                          <li><a href="<?= base_url('/admin/create-user') ?>">Create Users</a></li>
                      </ul>
-                 </li> -->
+                 </li>
 
 
              </ul>

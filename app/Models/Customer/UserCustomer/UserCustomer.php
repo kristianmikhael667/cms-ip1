@@ -10,5 +10,5 @@ class UserCustomer extends Model
     protected $primaryKey = "id_customer";
     protected $returnType = "object";
     protected $useTimestamps = true;
-    protected $allowedFields = ['id_customer', 'username', 'nama_perusahaan', 'alamat', 'password', 'upload_logo', 'Status'];
+    protected $allowedFields = ['id_customer', 'username', 'nama_perusahaan', 'alamat', 'password', 'upload_logo', 'Status', 'role'];
 }

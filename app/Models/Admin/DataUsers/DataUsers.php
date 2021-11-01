@@ -10,7 +10,7 @@ class DataUsers extends Model
     protected $primaryKey = "id";
     protected $returnType = "object";
     protected $useTimestamps = true;
-    protected $allowedFields = ['id', 'id_user', 'id_customer', 'username', 'alamat', 'password', 'upload_logo', 'Status'];
+    protected $allowedFields = ['id', 'id_user', 'id_customer', 'username', 'alamat', 'password', 'upload_logo', 'Status', 'role'];
 
     public function getDataUsers($username = false)
     {

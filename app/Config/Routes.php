@@ -45,6 +45,9 @@ $routes->group('admin', function ($routes) {
 $routes->group('customer', function ($routes) {
 	$routes->get('/', 'Dashboard::index', ['namespace' => 'App\Controllers\Customer\Dashboard']);
 	$routes->get('dashboard-customer', 'Dashboard::index', ['namespace' => 'App\Controllers\Customer\Dashboard']);
+	$routes->get('list-users', 'Datacustomer::datauser', ['namespace' => 'App\Controllers\Customer\Datacustomer']);
+	$routes->get('create-user', 'Datacustomer::create_user', ['namespace' => 'App\Controllers\Customer\Datacustomer']);
+	$routes->get('list-log', 'Datacustomer::data_log', ['namespace' => 'App\Controllers\Customer\Datacustomer']);
 });
 
 $routes->group('user', function ($routes) {

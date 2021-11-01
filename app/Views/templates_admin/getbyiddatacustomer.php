@@ -31,7 +31,7 @@
         $('#usernamecustomer').text(usernamre);
         let fd = new FormData();
         fd.append('id_customer', id_customer);
-
+        console.log(id_customer)
         $.ajax({
             type: "POST",
             url: `${baseUrl}/admin/user_by_customer_detail`,

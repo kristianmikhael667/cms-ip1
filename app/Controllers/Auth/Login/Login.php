@@ -51,6 +51,7 @@ class Login extends BaseController
                     'password' => $dataUserAdmin->password,
                     'upload_logo' => $dataUserAdmin->upload_logo,
                     'Status' => $dataUserAdmin->Status,
+                    'role' => $dataUserAdmin->role,
                     'logged_in' => TRUE
                 ]);
                 return redirect()->to(base_url('/admin/dashboard-admin'));
@@ -68,6 +69,7 @@ class Login extends BaseController
                     'alamat' => $dataUserCustomer->alamat,
                     'upload_logo' => $dataUserCustomer->upload_logo,
                     'Status' => $dataUserCustomer->Status,
+                    'role' => $dataUserCustomer->role,
                     'logged_in' => TRUE
                 ]);
                 return redirect()->to(base_url('/customer/dashboard-customer'));
@@ -85,6 +87,7 @@ class Login extends BaseController
                     'alamat' => $dataUsers->alamat,
                     'upload_logo' => $dataUsers->upload_logo,
                     'Status' => $dataUsers->Status,
+                    'role' => $dataUsers->role,
                     'logged_in' => TRUE
                 ]);
                 return redirect()->to(base_url('/user/dashboard-user'));

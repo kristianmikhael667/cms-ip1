@@ -258,7 +258,7 @@ class Dataadmin extends BaseController
         if (!$this->validate(
             [
                 'username' => [
-                    'rules' => 'required|is_unique[tbl_customer.username]|is_unique[tbl_user.username]|is_unique[tbl_customer.username]',
+                    'rules' => 'required|is_unique[tbl_admin.username]|is_unique[tbl_user.username]|is_unique[tbl_customer.username]',
                     'errors' => [
                         'required' => '{field} wajib diisi.',
                         'is_unique' => '{field} sudah terdaftar'
@@ -283,7 +283,7 @@ class Dataadmin extends BaseController
                     ]
                 ],
                 'upload_logo' => [
-                    'rules' => 'max_size[upload_logo,1024]|is_image[upload_logo]|mime_in[upload_logo,image/jpg,image/jpeg,image/png]',
+                    'rules' => 'max_size[upload_logo,3024]|is_image[upload_logo]|mime_in[upload_logo,image/jpg,image/jpeg,image/png,image]',
                     'errors' => [
                         'max_size' => 'Ukuran Gambar diatas 1 MB',
                         'is_image' => 'Bukan gambar',
@@ -374,7 +374,7 @@ class Dataadmin extends BaseController
                     ]
                 ],
                 'upload_logo' => [
-                    'rules' => 'max_size[upload_logo,1024]|is_image[upload_logo]|mime_in[upload_logo,image/jpg,image/jpeg,image/png]',
+                    'rules' => 'max_size[upload_logo,2024]|is_image[upload_logo]|mime_in[upload_logo,image/jpg,image/jpeg,image/png,image]',
                     'errors' => [
                         'max_size' => 'Ukuran Gambar diatas 1 MB',
                         'is_image' => 'Bukan gambar',
